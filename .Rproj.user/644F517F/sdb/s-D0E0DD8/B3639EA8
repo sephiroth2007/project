@@ -1,0 +1,17 @@
+{
+    "contents" : " library(shiny)\n library(RCurl)\n #options(RCHART_WIDTH = 600)\n #require(rCharts)\n library(rCharts)\n library(ggplot2)\n library(reshape2)\n #require(reshape2)\n \nshinyServer(function(input, output) {\n   \n   data1<-data.frame(year=c(2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014),month=c(1,2,3,4,5,6,7,8,9,10,11,12),incomes=c(500,1000,1100,1200,1350,900,800,900,1000,1150,1200,1300),\n                    expenses=c(20,30,40,50,60,70,65,60,54,77,87,88))\n  \n   data2<-data.frame(year=c(2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013),month=c(1,2,3,4,5,6,7,8,9,10,11,12),incomes=c(500,900,500,500,500,600,800,820,840,860,880,900),\n                    expenses=c(50,50,50,50,50,50,65,65,70,70,70,70))\n   \n   data3<-data.frame(year=c(2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012),month=c(1,2,3,4,5,6,7,8,9,10,11,12),incomes=c(600,650,700,710,720,730,750,710,720,730,740,750),\n                     expenses=c(60,60,65,56,58,77,70,65,72,73,71,70))\n   \n   data<-rbind(data1,data2,data3)\n   \n   output$chart1 <- renderChart({\n         YEAR = input$year\n         datos <- subset(data, year == YEAR)\n         \n         p1<-rPlot(incomes~month,data=datos,type=\"line\")\n         p1$guides(y = list(min = 0, title = \"\"))\n         p1$guides(y = list(title = \"\"))\n        p1$addParams(width = 600,height = 300, dom = 'chart1')\n        return(p1)\n   })\n   \n#    \n   output$chart2 <- renderChart({\n     YEAR = input$year\n     datos <- subset(data, year == YEAR)\n     \n     datos$utilidad<-datos$incomes-datos$expenses\n     \n     p2<-xPlot(utilidad ~ month, group = \"year\", data = datos, type = \"line-dotted\")\n    p2$addParams(width = 600,height = 200, dom = 'chart2')\n    \n    return(p2)\n   })\n\n\noutput$chart3 <- renderChart({\n  YEAR = input$year\n  datos <- subset(data, year == YEAR)\n  \n  m1 <- mPlot(x = \"month\", y = c(\"incomes\", \"expenses\"), type = \"Line\", data = datos)\n  m1$set(pointSize = 0, lineWidth = 1)\n  \n  m1$addParams(width = 600,height = 350, dom = 'chart3')\n  \n  return(m1)\n})\n\n\noutput$chart4 <- renderChart({\n \n  n1 <- nPlot(incomes ~ month, group = \"year\", data = data, type = \"multiBarChart\")\n  \n  n1$addParams(width = 600,height = 350, dom = 'chart4')\n  \n  n1$xAxis(axisLabel = 'Month')\n  n1$yAxis(axisLabel = 'Income')\n  \n  return(n1)\n})\n\n\n}) \n  \n \n ",
+    "created" : 1429843011639.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1223263711",
+    "id" : "B3639EA8",
+    "lastKnownWriteTime" : 1430008033,
+    "path" : "~/Desktop/COURSERA_PROGR_R/course9_Developingdataproducts/proyecto/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\nlibrary(rCharts)\nlibrary(markdown)\n#require(rCharts)\n\n\n\noptions(RCHART_LIB = 'polycharts')\nshinyUI(pageWithSidebar(\n  headerPanel(\"Incomes and Expenses of a Company\"),\n  sidebarPanel(\n    selectInput(inputId = \"year\",\n                label = \"Select year to compare Incomes/Expenses\",\n                choices = c(2012,2013,2014),selected = 2014),\n    \n    helpText(\"How it works\",\n             \"1. The user select a year\",\n             \"2. In all cases above, when the user make a choice, the plot is updated with the year selected by the user.\",\n             \"3. The Platform calculates Utility from year selected\",\n             \" 4. The user can choise between several graphical options: \n    Incomes in the selected year.\n  Compare incomes/expenses \n  Utility in the year\")\n   \n  )\n    ,\n  \n\n  \nmainPanel(\n   \n  tabsetPanel(\n    tabPanel(\"Incomes in the Selected Year\", showOutput(\"chart1\", \"polycharts\")),\n    tabPanel(\"Compare Incomes and Expenses in the Selected Year\", showOutput(\"chart3\",\"morris\")),\n  tabPanel(\"Utility in the Selected Year\",showOutput(\"chart2\",\"xcharts\"))),\n    showOutput(\"chart4\",\"nvd3\")\n    \n)\n)\n)\n\n\n\n\n",
+    "created" : 1429923804346.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3275884660",
+    "id" : "876FA67E",
+    "lastKnownWriteTime" : 1430015774,
+    "path" : "~/Desktop/COURSERA_PROGR_R/course9_Developingdataproducts/proyecto/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

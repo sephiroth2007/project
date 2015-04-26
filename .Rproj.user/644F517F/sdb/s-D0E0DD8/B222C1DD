@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle       : Coursera Developing Data Products Slidify Project\nsubtitle    : Saturday, April 25, 2015\nauthor      : Matías Alfredo Morales Armijo\njob         : \nframework   :  io2012       # {io2012, html5slides, shower, dzslides, ...}\nhighlighter : highlight.js  # {highlight.js, prettify, highlight}\nhitheme     : tomorrow      # \nwidgets     : [mathjax, quiz, bootstrap,interactive]            # {mathjax, quiz, bootstrap}\nmode        : selfcontained # {standalone, draft}\nknit        : slidify::knit2slides\next_widgets: {rCharts: [libraries/nvd3]}\n---\n\n## The Project\n\nThis is my reproducible pitch presentation, where I describe what I did in my simple app project.\nThis project works with a matrix of incomes and expenses of three years (2012,2013,2014) of a company. This data matrix was invented. This shiny calculates the utility of the year selected by the user.\nUtility is the difference between income and expense in a month.\n$$Utility (U)=Income (I)-Expense (E)$$\n\n\n--- \n\n## The Dataset column names (Example one year)\n```{r block1}\ndata<-data.frame(year=c(2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,\n2014,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2012,2012,\n2012,2012,2012,2012,2012,2012,2012,2012,2012,2012),month=c(1,2,3,4,5,6,7,8,9,10\n,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12),\nincomes=c(500,1000,1100,1200,1350,900,800,900,1000,1150,1200,1300,\n600,650,700,710,720,730,750,710,720,730,740,750,600,650,700,710,720,\n730,750,710,720,730,740,750),expenses=c(20,30,40,50,60,70,65,60,54,77,\n87,88,50,50,50,50,50,50,65,65,70,70,70,70,60,60,65,56,58,77,70,65,72,73,71,70))\nhead(data)\n```\n \n\n---\n\n## How it works\n\n 1. The user select a year    \n 2. In all cases above, when the user make a choice, the plot is updated with the year selected by the user.\n 2. The Platform calculates Utility from year selected\n 3. The user can choise between several graphical options: \n  Incomes in the selected year.\n  Compare incomes/expenses \n  Utility in the year\n\nTake this amazing experience going to: https://matiasmorales.shinyapps.io/project/\n\n\n---\n\n## Plot Sample\n```{r echo = F, results = 'asis'}\nrequire(rCharts)\n n1 <- nPlot(incomes ~ month, group = \"year\", data = data, type = \"multiBarChart\")\n  \n  n1$addParams(width = 600,height = 350, dom = 'chart4')\nn1$print('chart4')\n\n\n\n\n```\n",
+    "created" : 1430007037694.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4080334950",
+    "id" : "B222C1DD",
+    "lastKnownWriteTime" : 1430014640,
+    "path" : "~/Desktop/COURSERA_PROGR_R/course9_Developingdataproducts/first_deck/index.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
